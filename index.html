@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FLORECER – Tu Plan Personalizado de Bienestar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="icon" type="image/png" href="assets/favicono.png">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Meta Pixel -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1460321182485341');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1460321182485341&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- Fin Meta Pixel -->
+</head>
+<body>
+
+  <!-- QUIZ HEADER -->
+  <header class="quiz-header" id="quizHeader">
+    <div class="header-inner">
+      <div class="logo">
+        <img src="assets/logo.png" alt="FLORECER" class="logo-img">
+      </div>
+      <div class="progress-wrap" id="progressWrap">
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <span class="progress-label" id="progressLabel">1 de 12</span>
+      </div>
+    </div>
+  </header>
+
+  <main id="appRoot">
+
+    <!-- ===== S0: GÉNERO ===== -->
+    <section class="screen active" id="s0">
+      <div class="gender-page">
+        <div class="gender-brand">
+          <img src="assets/logo.png" alt="FLORECER" class="brand-logo-img">
+          <h1 class="gender-headline">Descubrí <em>qué te está pasando</em> y cómo cambiarlo.</h1>
+          <p class="quiz-duration-badge">⏱ Solo 2 minutos · Guía personalizada</p>
+        </div>
+        <p class="gender-select-label">Seleccioná tu género para comenzar</p>
+        <div class="gender-cards">
+          <button class="gender-card" id="cardMale" onclick="selectGender('male')">
+            <div class="gender-img-frame">
+              <img src="assets/hombre.png" alt="Hombre" loading="lazy">
+            </div>
+            <div class="gender-card-label">
+              <span>Hombre</span>
+              <span class="gender-card-arrow">›</span>
+            </div>
+          </button>
+          <button class="gender-card" id="cardFemale" onclick="selectGender('female')">
+            <div class="gender-img-frame">
+              <img src="assets/mujer.png" alt="Mujer" loading="lazy">
+            </div>
+            <div class="gender-card-label">
+              <span>Mujer</span>
+              <span class="gender-card-arrow">›</span>
+            </div>
+          </button>
+        </div>
+        <p class="gender-terms">Al hacer clic en "Hombre" o "Mujer", aceptás los <a href="terminos.html" target="_blank">Términos de uso y servicio</a>, la <a href="privacidad.html" target="_blank">Política de privacidad</a>, la <a href="suscripcion.html" target="_blank">Política de suscripción</a> y la <a href="cookies.html" target="_blank">Política de cookies</a>.</p>
+      </div>
+    </section>
+
+    <!-- ===== S1: EDAD ===== -->
+    <section class="screen" id="s1">
+      <div class="quiz-wrap">
+        <button class="back-btn" onclick="prevScreen()">← Volver</button>
+        <h2 class="q-title">¿Cuántos años tenés?</h2>
+        <div class="options-grid" id="opts1">
+          <div class="opt age-opt" data-val="18-24" onclick="pickOpt(this,1)"><span class="opt-txt">18 – 24 años</span></div>
+          <div class="opt age-opt" data-val="25-34" onclick="pickOpt(this,1)"><span class="opt-txt">25 – 34 años</span></div>
+          <div class="opt age-opt" data-val="35-44" onclick="pickOpt(this,1)"><span class="opt-txt">35 – 44 años</span></div>
+          <div class="opt age-opt" data-val="45-54" onclick="pickOpt(this,1)"><span class="opt-txt">45 – 54 años</span></div>
+          <div class="opt age-opt" data-val="55+" onclick="pickOpt(this,1)"><span class="opt-txt">Más de 55 años</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== S2: Q1 MAÑANAS ===== -->
+    <section class="screen" id="s2">
+      <div class="quiz-wrap">
+        <button class="back-btn" onclick="prevScreen()">← Volver</button>
+        <h2 class="q-title">¿Cómo te sentís al despertar la mayoría de los días?</h2>
+        <div class="options-grid" id="opts2">
+          <div class="opt" data-val="4" onclick="pickOpt(this,2)"><span class="opt-icon">⚡</span><span class="opt-txt">Con mucha energía y ganas de empezar el día</span></div>
+          <div class="opt" data-val="3" onclick="pickOpt(this,2)"><span class="opt-icon">😊</span><span class="opt-txt">Bien, pero tardo un rato en arrancar</span></div>
+          <div class="opt" data-val="2" onclick="pickOpt(this,2)"><span class="opt-icon">😴</span><span class="opt-txt">Cansado/a y sin mucha motivación</span></div>
+          <div class="opt" data-val="1" onclick="pickOpt(this,2)"><span class="opt-icon">😔</span><span class="opt-txt">Agotado/a y sin energía desde el primer momento</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== INT1: SOCIAL PROOF ===== -->
+    <section class="screen" id="sInt1">
+      <div class="intermediate-wrap">
+        <div class="int-card social-proof-card">
+          <div class="sp-row">
+            <div class="sp-avatars">
+              <img src="assets/grafico.jpeg"   class="sp-av">
+              <img src="assets/grafico 2.jpeg" class="sp-av">
+              <img src="assets/grafico 3.jpeg" class="sp-av">
+              <img src="assets/grafico 4.jpeg" class="sp-av">
+              <img src="assets/grafico 5.jpeg" class="sp-av">
+            </div>
+            <div class="sp-text">
+              <div class="sp-stars">★★★★★</div>
+              <div class="sp-count"><strong>+250.000</strong></div>
+            </div>
+          </div>
+          <h2 class="int-title">Tomaste la mejor decisión.<br><span class="int-brand">Ahora es tu momento.</span></h2>
+          <p class="int-sub">Cada día más argentinos transforman su bienestar con nuestro programa personalizado</p>
+          <div class="int-stats-row">
+            <div class="int-stat"><span class="int-stat-n">93%</span><span class="int-stat-l">siente mejoras en las primeras 2 semanas</span></div>
+            <div class="int-stat-divider"></div>
+            <div class="int-stat"><span class="int-stat-n">4.9★</span><span class="int-stat-l">calificación promedio de usuarios</span></div>
+          </div>
+          <button class="btn-cont btn-cont-int" onclick="nextScreen()">Continuar →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== S3: Q2 ANSIEDAD ===== -->
+    <section class="screen" id="s3">
+      <div class="quiz-wrap">
+        <button class="back-btn" onclick="prevScreen()">← Volver</button>
+        <div class="quiz-testi-pill">
+          <img src="assets/descarga.jpeg" class="qtp-avatar">
+          <span>"En 2 semanas bajé mi ansiedad notablemente" — <strong>Sofía, BA</strong></span>
+        </div>
+        <h2 class="q-title">¿Con qué frecuencia experimentás ansiedad, estrés o angustia?</h2>
+        <div class="options-grid" id="opts3">
+          <div class="opt" data-val="4" onclick="pickOpt(this,3)"><span class="opt-icon">✨</span><span class="opt-txt">Casi nunca, me siento bastante tranquilo/a</span></div>
+          <div class="opt" data-val="3" onclick="pickOpt(this,3)"><span class="opt-icon">🌤️</span><span class="opt-txt">A veces, en situaciones de mucha demanda</span></div>
+          <div class="opt" data-val="2" onclick="pickOpt(this,3)"><span class="opt-icon">⛅</span><span class="opt-txt">Frecuentemente, casi todos los días</span></div>
+          <div class="opt" data-val="1" onclick="pickOpt(this,3)"><span class="opt-icon">🌩️</span><span class="opt-txt">Casi siempre, es parte de mi vida cotidiana</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== S4: Q3 ENERGÍA DÍA ===== -->
+    <section class="screen" id="s4">
+      <div class="quiz-wrap">
+        <button class="back-btn" onclick="prevScreen()">← Volver</button>
+        <h2 class="q-title">¿Cómo describirías tu nivel de energía a lo largo del día?</h2>
+        <div class="options-grid" id="opts4">
+          <div class="opt" data-val="4" onclick="pickOpt(this,4)"><span class="opt-icon">🔋</span><span class="opt-txt">Alto y constante, me mantengo activo/a todo el día</span></div>
+          <div class="opt" data-val="3" onclick="pickOpt(this,4)"><span class="opt-icon">⚡</span><span class="opt-txt">Tiene altibajos pero generalmente bien</span></div>
+          <div class="opt" data-val="2" onclick="pickOpt(this,4)"><span class="opt-icon">🪫</span><span class="opt-txt">Bajo, me canso fácilmente y necesito descansos</span></div>
+          <div class="opt" data-val="1" onclick="pickOpt(this,4)"><span class="opt-icon">😩</span><span class="opt-txt">Muy bajo, el agotamiento me arrastra</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== S5: Q4 SUEÑO HORAS ===== -->
+    <section class="screen" id="s5">
+      <div class="quiz-wrap">
+        <button class="back-btn" onclick="prevScreen()">← Volver</button>
+        <div class="mid-stat-bar">💤 El 74% de personas con bajo nivel de energía también tiene problemas de sueño — es uno de los primeros puntos que trabaja tu plan.</div>
+        <h2 class="q-title">¿Cuántas horas dormís por noche habitualmente?</h2>
+        <div class="options-grid" id="opts5">
+          <div class="opt" data-val="1" onclick="pickOpt(this,5)"><span class="opt-icon">⏰</span><span class="opt-txt">Menos de 5 horas</span></div>
+          <div class="opt" data-val="2" onclick="pickOpt(this,5)"><span class="opt-icon">🌙</span><span class="opt-txt">5 a 6 horas</span></div>
+          <div class="opt" data-val="3" onclick="pickOpt(this,5)"><span class="opt-icon">😴</span><span class="opt-txt">7 a 8 horas</span></div>
+          <div class="opt" data-val="4" onclick="pickOpt(this,5)"><span class="opt-icon">🛌</span><span class="opt-txt">Más de 8 horas</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== S6: Q5 CALIDAD SUEÑO ===== -->
+    <section class="screen" id="s6">
+      <div class="quiz-wrap">
+        <button class="back-btn" onclick="prevScreen()">← Volver</button>
+        <div class="quiz-testi-pill">
+          <img src="assets/descarga (6).jpeg" class="qtp-avatar">
+          <span>"Dormía 4 horas, ahora duermo 7. No lo puedo creer." — <strong>Valentina, Rosario</strong></span>
+        </div>
+        <h2 class="q-title">¿Cómo describirías la calidad de tu sueño?</h2>
+        <div class="options-grid" id="opts6">
+          <div class="opt" data-val="4" onclick="pickOpt(this,6)"><span class="opt-icon">💤</span><span class="opt-txt">Excelente, descanso profundamente sin interrupciones</span></div>
+          <div class="opt" data-val="3" onclick="pickOpt(this,6)"><span class="opt-icon">😌</span><span class="opt-txt">Buena, aunque a veces me cuesta conciliar el sueño</span></div>
+          <div class="opt" data-val="2" onclick="pickOpt(this,6)"><span class="opt-icon">😶</span><span class="opt-txt">Regular, me despierto varias veces o me cuesta dormirme</span></div>
+          <div class="opt" data-val="1" onclick="pickOpt(this,6)"><span class="opt-icon">😵</span><span class="opt-txt">Mala, tengo insomnio o descanso muy poco</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== S7: Q6 AGOTAMIENTO ===== -->
+    <section class="screen" id="s7">
+      <div class="quiz-wrap">
+        <button class="back-btn" onclick="prevScreen()">← Volver</button>
+        <h2 class="q-title">¿Con qué frecuencia te sentís emocionalmente agotado/a o vacío/a?</h2>
+        <div class="options-grid" id="opts7">
+          <div class="opt" data-val="4" onclick="pickOpt(this,7)"><span class="opt-icon">💚</span><span class="opt-txt">Casi nunca, me siento emocionalmente estable</span></div>
+          <div class="opt" data-val="3" onclick="pickOpt(this,7)"><span class="opt-icon">💛</span><span class="opt-txt">De vez en cuando, en épocas difíciles</span></div>
+          <div class="opt" data-val="2" onclick="pickOpt(this,7)"><span class="opt-icon">🧡</span><span class="opt-txt">Seguido, varias veces por semana</span></div>
+          <div class="opt" data-val="1" onclick="pickOpt(this,7)"><span class="opt-icon">❤️</span><span class="opt-txt">Constantemente, es mi estado habitual</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== IDENT1: IDENTIFICACIÓN ===== -->
+    <section class="screen" id="sIdent1">
+      <div class="quiz-wrap ident-wrap">
+        <button class="back-btn" onclick="prevScreen()">← Volver</button>
+        <p class="ident-eyebrow">¿Qué tanto te identificás?</p>
+        <h2 class="q-title ident-quote">"Me cuesta desconectarme de los problemas y detener los pensamientos negativos."</h2>
+        <div class="ident-scale" id="optsIdent1">
+          <div class="ident-opt" data-val="1" onclick="pickIdent(this,'ident1')">
+            <span class="ident-emoji">😐</span><span class="ident-lbl">Nada</span>
+          </div>
+          <div class="ident-opt" data-val="2" onclick="pickIdent(this,'ident1')">
+            <span class="ident-emoji">🙁</span><span class="ident-lbl">Muy poco</span>
+          </div>
+          <div class="ident-opt" data-val="3" onclick="pickIdent(this,'ident1')">
+            <span class="ident-emoji">😔</span><span class="ident-lbl">Algo</span>
+          </div>
+          <div class="ident-opt" data-val="4" onclick="pickIdent(this,'ident1')">
+            <span class="ident-emoji">😥</span><span class="ident-lbl">Bastante</span>
+          </div>
+          <div class="ident-opt" data-val="5" onclick="pickIdent(this,'ident1')">
+            <span class="ident-emoji">😞</span><span class="ident-lbl">Totalmente</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== INT2: CIENCIA ===== -->
+    <section class="screen" id="sInt2">
+      <div class="intermediate-wrap">
+        <div class="int-card science-card">
+
+          <!-- Mind diagram -->
+          <div class="mind-diagram">
+            <div class="mind-pill mind-pill-tl">Pensamientos</div>
+            <div class="mind-pill mind-pill-tr">Sentimientos</div>
+            <div class="mind-center-wrap">
+              <div class="mind-ring"></div>
+              <div class="mind-emoji">🧠</div>
+            </div>
+            <div class="mind-pill mind-pill-b">Comportamiento</div>
+          </div>
+
+          <h2 class="int-title science-title">Tu plan estará basado<br>en <span class="science-green">ciencia.</span></h2>
+          <p class="science-quote">"Los programas con respaldo científico que integran mente, emociones y hábitos generan cambios reales y duraderos en el bienestar de las personas."</p>
+
+          <div class="expert-card">
+            <div class="expert-badge-row">
+              <span class="expert-badge-label">Contenido revisado por expertos.</span>
+            </div>
+            <div class="expert-inner">
+              <img src="assets/VALENTINA RIOS.png" class="expert-photo" alt="Dra. Valentina Ríos">
+              <div>
+                <p class="expert-name">Dra. Valentina Ríos</p>
+                <p class="expert-role">Psicóloga clínica · Especialista en bienestar emocional</p>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn-cont btn-cont-int" onclick="nextScreen()">Continuar →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== S8: Q7 RELACIONES ===== -->
+    <section class="screen" id="s8">
+      <div class="quiz-wrap">
+        <button class="back-btn" onclick="prevScreen()">← Volver</button>
+        <div class="mid-stat-bar">🌱 El 93% de nuestros usuarios notó mejoras en sus relaciones durante las primeras 4 semanas del programa.</div>
+        <h2 class="q-title">¿Tu estado emocional afecta tus relaciones personales o laborales?</h2>
+        <div class="options-grid" id="opts8">
+          <div class="opt" data-val="4" onclick="pickOpt(this,8)"><span class="opt-icon">🤝</span><span class="opt-txt">No, mis relaciones son fluidas y positivas</span></div>
+          <div class="opt" data-val="3" onclick="pickOpt(this,8)"><span class="opt-icon">🌱</span><span class="opt-txt">A veces genera alguna fricción, pero lo manejo</span></div>
+          <div class="opt" data-val="2" onclick="pickOpt(this,8)"><span class="opt-icon">😰</span><span class="opt-txt">Bastante, me cuesta conectar con los demás</span></div>
+          <div class="opt" data-val="1" onclick="pickOpt(this,8)"><span class="opt-icon">💔</span><span class="opt-txt">Mucho, afecta seriamente mis vínculos</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== S9: Q8 EJERCICIO ===== -->
+    <section class="screen" id="s9">
+      <div class="quiz-wrap">
+        <button class="back-btn" onclick="prevScreen()">← Volver</button>
+        <h2 class="q-title">¿Con qué frecuencia realizás actividad física o movimiento consciente?</h2>
+        <div class="options-grid" id="opts9">
+          <div class="opt" data-val="4" onclick="pickOpt(this,9)"><span class="opt-icon">🏃</span><span class="opt-txt">Todos los días o casi todos los días</span></div>
+          <div class="opt" data-val="3" onclick="pickOpt(this,9)"><span class="opt-icon">🚴</span><span class="opt-txt">3 a 4 veces por semana</span></div>
+          <div class="opt" data-val="2" onclick="pickOpt(this,9)"><span class="opt-icon">🧘</span><span class="opt-txt">1 a 2 veces por semana</span></div>
+          <div class="opt" data-val="1" onclick="pickOpt(this,9)"><span class="opt-icon">🛋️</span><span class="opt-txt">Casi nunca o nunca</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== S10: Q9 FOCO ===== -->
+    <section class="screen" id="s10">
+      <div class="quiz-wrap">
+        <button class="back-btn" onclick="prevScreen()">← Volver</button>
+        <div class="mid-stat-bar">🎯 Personas con tu perfil reportaron un 45% más de productividad después de completar el programa FLORECER.</div>
+        <h2 class="q-title">¿Te cuesta mantener la concentración o la productividad durante el día?</h2>
+        <div class="options-grid" id="opts10">
+          <div class="opt" data-val="4" onclick="pickOpt(this,10)"><span class="opt-icon">🎯</span><span class="opt-txt">No, puedo mantenerme enfocado/a sin problema</span></div>
+          <div class="opt" data-val="3" onclick="pickOpt(this,10)"><span class="opt-icon">📋</span><span class="opt-txt">A veces me distraigo pero lo recupero</span></div>
+          <div class="opt" data-val="2" onclick="pickOpt(this,10)"><span class="opt-icon">😵</span><span class="opt-txt">Frecuentemente, la niebla mental me afecta bastante</span></div>
+          <div class="opt" data-val="1" onclick="pickOpt(this,10)"><span class="opt-icon">🌀</span><span class="opt-txt">Casi siempre, no logro concentrarme en nada</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== IDENT2: IDENTIFICACIÓN ===== -->
+    <section class="screen" id="sIdent2">
+      <div class="quiz-wrap ident-wrap">
+        <button class="back-btn" onclick="prevScreen()">← Volver</button>
+        <p class="ident-eyebrow">¿Qué tanto te identificás?</p>
+        <h2 class="q-title ident-quote">"Siento que no me cuido como debería y que mi bienestar merece más atención."</h2>
+        <div class="ident-scale" id="optsIdent2">
+          <div class="ident-opt" data-val="1" onclick="pickIdent(this,'ident2')">
+            <span class="ident-emoji">😐</span><span class="ident-lbl">Nada</span>
+          </div>
+          <div class="ident-opt" data-val="2" onclick="pickIdent(this,'ident2')">
+            <span class="ident-emoji">🙁</span><span class="ident-lbl">Muy poco</span>
+          </div>
+          <div class="ident-opt" data-val="3" onclick="pickIdent(this,'ident2')">
+            <span class="ident-emoji">😔</span><span class="ident-lbl">Algo</span>
+          </div>
+          <div class="ident-opt" data-val="4" onclick="pickIdent(this,'ident2')">
+            <span class="ident-emoji">😥</span><span class="ident-lbl">Bastante</span>
+          </div>
+          <div class="ident-opt" data-val="5" onclick="pickIdent(this,'ident2')">
+            <span class="ident-emoji">😞</span><span class="ident-lbl">Totalmente</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== S11: Q10 SÍNTOMAS MULTI ===== -->
+    <section class="screen" id="s11">
+      <div class="quiz-wrap">
+        <button class="back-btn" onclick="prevScreen()">← Volver</button>
+        <h2 class="q-title">¿Cuáles de estas situaciones te generan más dificultad?</h2>
+        <p class="q-sub">Podés seleccionar más de una opción</p>
+        <div class="options-grid multi" id="opts11">
+          <div class="opt" data-val="stress" onclick="toggleOpt(this,11)"><span class="opt-icon">🌪️</span><span class="opt-txt">Estrés y tensión acumulada</span></div>
+          <div class="opt" data-val="sleep" onclick="toggleOpt(this,11)"><span class="opt-icon">🌙</span><span class="opt-txt">Problemas de sueño o insomnio</span></div>
+          <div class="opt" data-val="mood" onclick="toggleOpt(this,11)"><span class="opt-icon">🎭</span><span class="opt-txt">Cambios de humor o irritabilidad</span></div>
+          <div class="opt" data-val="energy" onclick="toggleOpt(this,11)"><span class="opt-icon">🔋</span><span class="opt-txt">Falta de energía y motivación</span></div>
+          <div class="opt" data-val="focus" onclick="toggleOpt(this,11)"><span class="opt-icon">🎯</span><span class="opt-txt">Dificultad para concentrarme</span></div>
+          <div class="opt" data-val="thoughts" onclick="toggleOpt(this,11)"><span class="opt-icon">💭</span><span class="opt-txt">Pensamientos negativos o rumiación</span></div>
+          <div class="opt" data-val="social" onclick="toggleOpt(this,11)"><span class="opt-icon">🤝</span><span class="opt-txt">Problemas en relaciones personales</span></div>
+          <div class="opt" data-val="body" onclick="toggleOpt(this,11)"><span class="opt-icon">💪</span><span class="opt-txt">Tensión física o dolores frecuentes</span></div>
+        </div>
+        <button class="btn-cont hidden" id="cont11" onclick="nextScreen()">Continuar →</button>
+      </div>
+    </section>
+
+    <!-- ===== SÍNTOMAS DE ANSIEDAD ===== -->
+    <section class="screen" id="sAnxSymptoms">
+      <div class="quiz-wrap" style="padding-bottom: 100px;">
+        <button class="back-btn" onclick="prevScreen()">← Volver</button>
+        <h2 class="q-title">¿Cuáles de estos comportamientos reconocés en vos?</h2>
+        <p class="q-sub">Podés seleccionar más de una opción</p>
+        <div class="options-grid multi" id="optsAnx">
+          <div class="opt" data-val="nails"   onclick="toggleOpt(this,'anx')"><span class="opt-icon">💅</span><span class="opt-txt">Me muerdo las uñas o la piel sin darme cuenta</span></div>
+          <div class="opt" data-val="eat"     onclick="toggleOpt(this,'anx')"><span class="opt-icon">🍫</span><span class="opt-txt">Como sin hambre cuando estoy nervioso/a o estresado/a</span></div>
+          <div class="opt" data-val="phone"   onclick="toggleOpt(this,'anx')"><span class="opt-icon">📱</span><span class="opt-txt">Reviso el celular compulsivamente sin saber por qué</span></div>
+          <div class="opt" data-val="jaw"     onclick="toggleOpt(this,'anx')"><span class="opt-icon">😬</span><span class="opt-txt">Aprieto los dientes o la mandíbula sin querer</span></div>
+          <div class="opt" data-val="stomach" onclick="toggleOpt(this,'anx')"><span class="opt-icon">🤢</span><span class="opt-txt">Siento el estómago revuelto en situaciones de tensión</span></div>
+          <div class="opt" data-val="sigh"    onclick="toggleOpt(this,'anx')"><span class="opt-icon">😮‍💨</span><span class="opt-txt">Suspiro seguido o siento que me falta el aire</span></div>
+          <div class="opt" data-val="control" onclick="toggleOpt(this,'anx')"><span class="opt-icon">🔒</span><span class="opt-txt">Necesito tenerlo todo controlado o me desestabilizo</span></div>
+          <div class="opt" data-val="irritable" onclick="toggleOpt(this,'anx')"><span class="opt-icon">😤</span><span class="opt-txt">Me irrito por cosas pequeñas que antes no me molestaban</span></div>
+          <div class="opt opt-none" data-val="none" onclick="selectNoneAnx(this)"><span class="opt-icon">🙅</span><span class="opt-txt">Ninguno de estos</span></div>
+        </div>
+      </div>
+      <div class="anx-btn-wrap" id="anxBtnWrap" style="display:none;">
+        <button class="btn-cont" id="contAnx" onclick="nextScreen()">Continuar →</button>
+      </div>
+    </section>
+
+    <!-- ===== INT ANSIEDAD ===== -->
+    <section class="screen" id="sIdent3b">
+      <div class="anx-int-page">
+        <div class="anx-int-img-wrap">
+          <img src="https://images.unsplash.com/photo-1541199249251-f713e6145474?w=800&q=80" alt="" class="anx-int-img">
+          <div class="anx-int-img-overlay"></div>
+          <div class="anx-int-badge">91% de los argentinos tiene estrés crónico</div>
+        </div>
+        <div class="anx-int-content">
+          <p class="anx-int-eyebrow">Esto tiene una explicación</p>
+          <h2 class="anx-int-title">No es tu carácter.<br>Es tu <em>sistema nervioso</em>.</h2>
+          <p class="anx-int-body">Lo que marcaste no son "manías" ni debilidad. Son señales físicas de que tu cuerpo lleva demasiado tiempo en modo alerta. Y eso tiene solución.</p>
+          <button class="btn-cont" onclick="nextScreen()">Entendido, continuar →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== S12: Q11 MINDFULNESS ===== -->
+    <section class="screen" id="s12">
+      <div class="quiz-wrap">
+        <button class="back-btn" onclick="prevScreen()">← Volver</button>
+        <h2 class="q-title">¿Con qué frecuencia practicás mindfulness, meditación o técnicas de relajación?</h2>
+        <div class="options-grid" id="opts12">
+          <div class="opt" data-val="4" onclick="pickOpt(this,12)"><span class="opt-icon">🧘</span><span class="opt-txt">A diario, es parte de mi rutina</span></div>
+          <div class="opt" data-val="3" onclick="pickOpt(this,12)"><span class="opt-icon">🌿</span><span class="opt-txt">Varias veces por semana</span></div>
+          <div class="opt" data-val="2" onclick="pickOpt(this,12)"><span class="opt-icon">🌱</span><span class="opt-txt">Muy de vez en cuando</span></div>
+          <div class="opt" data-val="1" onclick="pickOpt(this,12)"><span class="opt-icon">❓</span><span class="opt-txt">Nunca, no sé por dónde empezar</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== S13: Q12 OBJETIVO ===== -->
+    <section class="screen" id="s13">
+      <div class="quiz-wrap">
+        <button class="back-btn" onclick="prevScreen()">← Volver</button>
+        <h2 class="q-title">¿Cuál es tu principal objetivo al comenzar FLORECER?</h2>
+        <div class="options-grid" id="opts13">
+          <div class="opt" data-val="energy" onclick="pickOpt(this,13)"><span class="opt-icon">⚡</span><span class="opt-txt">Recuperar mi energía y vitalidad</span></div>
+          <div class="opt" data-val="calm" onclick="pickOpt(this,13)"><span class="opt-icon">🌿</span><span class="opt-txt">Reducir el estrés y encontrar calma interior</span></div>
+          <div class="opt" data-val="emotion" onclick="pickOpt(this,13)"><span class="opt-icon">💚</span><span class="opt-txt">Mejorar mi estado emocional y autoestima</span></div>
+          <div class="opt" data-val="sleep" onclick="pickOpt(this,13)"><span class="opt-icon">🌙</span><span class="opt-txt">Mejorar la calidad de mi sueño y descanso</span></div>
+          <div class="opt" data-val="focus" onclick="pickOpt(this,13)"><span class="opt-icon">🎯</span><span class="opt-txt">Aumentar mi foco y productividad diaria</span></div>
+          <div class="opt" data-val="all" onclick="pickOpt(this,13)"><span class="opt-icon">🌸</span><span class="opt-txt">Todo lo anterior, quiero una transformación completa</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== INTENTOS PREVIOS ===== -->
+    <section class="screen" id="sPrevAttempt">
+      <div class="quiz-wrap">
+        <button class="back-btn" onclick="prevScreen()">← Volver</button>
+        <div class="mid-stat-bar">💡 El 87% de las personas que no logran cambios duraderos nunca tuvieron un sistema adaptado a su perfil.</div>
+        <h2 class="q-title">¿Ya intentaste mejorar tu bienestar o reducir el estrés antes?</h2>
+        <div class="options-grid" id="optsPrev">
+          <div class="opt" data-val="tried_failed" onclick="pickOpt(this,'prev')"><span class="opt-icon">😔</span><span class="opt-txt">Sí, pero lo dejé antes de ver resultados reales</span></div>
+          <div class="opt" data-val="tried_partial" onclick="pickOpt(this,'prev')"><span class="opt-icon">🌤️</span><span class="opt-txt">Sí, me ayudó un poco pero no fue suficiente</span></div>
+          <div class="opt" data-val="no_start" onclick="pickOpt(this,'prev')"><span class="opt-icon">🤔</span><span class="opt-txt">Quise empezar pero no supe por dónde</span></div>
+          <div class="opt" data-val="first_time" onclick="pickOpt(this,'prev')"><span class="opt-icon">🌱</span><span class="opt-txt">Es la primera vez que lo intento</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== COMPROMISO ===== -->
+    <section class="screen" id="sCommit">
+      <div class="commit-wrap">
+        <div class="commit-card">
+          <div class="commit-icon">🌿</div>
+          <h2 class="commit-title">¿Cómo te llamás?</h2>
+          <p class="commit-sub">Así personalizamos tu guía con tu nombre.</p>
+          <input type="text" id="commitNameInput" class="commit-input" placeholder="Tu nombre" autocomplete="given-name">
+          <div class="commit-box" id="commitBox" style="display:none">
+            <p class="commit-promise-text" id="commitPromiseText">"Yo, <strong id="commitNameDisplay"></strong>, me comprometo a darme la oportunidad de sentirme mejor."</p>
+          </div>
+          <button class="btn-commit" id="commitBtn" onclick="submitCommit()">Ver mi plan personalizado →</button>
+          <p class="commit-hint">Solo para personalizar tu experiencia.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== INT3: RESULTADOS PREVIEW ===== -->
+    <section class="screen" id="sInt3">
+      <div class="intermediate-wrap">
+        <div class="int-card results-preview-card">
+          <h2 class="int-title">Personas con tu perfil<br>ya <span class="int-brand">lo lograron</span></h2>
+          <div class="rp-stats-row">
+            <div class="rp-stat"><span class="rp-stat-n">83%</span><span class="rp-stat-l">mejoró su bienestar en 6 semanas</span></div>
+            <div class="rp-stat"><span class="rp-stat-n">74%</span><span class="rp-stat-l">duerme mejor en los primeros 7 días</span></div>
+            <div class="rp-stat"><span class="rp-stat-n">9/10</span><span class="rp-stat-l">recomendaría el programa</span></div>
+          </div>
+          <div class="rp-testimonial">
+            <img src="assets/descarga (4).jpeg" class="rp-testi-avatar">
+            <div>
+              <p class="rp-testi-text">"Cambié hábitos que tenía hace años. La mejor inversión que hice."</p>
+              <span class="rp-testi-name">Diego R. · Córdoba ★★★★★</span>
+            </div>
+          </div>
+          <button class="btn-cont btn-cont-int" onclick="nextScreen()">Ver mi análisis →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ANALYSIS / LOADING ===== -->
+    <section class="screen" id="sLoading" style="position:relative;overflow:hidden;">
+      <div class="analysis-page">
+
+        <img src="assets/logo.png" alt="FLORECER" class="analysis-logo">
+
+        <div class="analysis-heading">
+          <p class="analysis-heading-pre">Creando tu</p>
+          <h2 class="analysis-heading-main">Plan de bienestar<br><em>personalizado</em></h2>
+        </div>
+
+        <!-- Checklist de pasos — estilo Liven -->
+        <div class="analysis-steps" id="analysisSteps">
+          <div class="astep" id="astep0">
+            <span class="astep-label" id="astepLabel0">Analizando tus respuestas</span>
+            <span class="astep-right">
+              <span class="astep-pct" id="astepPct0"></span>
+              <span class="astep-check" id="astepCheck0"></span>
+            </span>
+          </div>
+          <div class="astep astep-locked" id="astep1">
+            <span class="astep-label" id="astepLabel1">Evaluando tu perfil emocional</span>
+            <span class="astep-right">
+              <span class="astep-pct" id="astepPct1"></span>
+              <span class="astep-check" id="astepCheck1"></span>
+            </span>
+          </div>
+          <div class="astep astep-locked" id="astep2">
+            <span class="astep-label" id="astepLabel2">Armando tu guía personalizada</span>
+            <span class="astep-right">
+              <span class="astep-pct" id="astepPct2"></span>
+              <span class="astep-check" id="astepCheck2"></span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Barra de progreso actual (debajo del step activo) -->
+        <div class="analysis-bar-wrap" id="analysisBarWrap">
+          <div class="analysis-bar-track">
+            <div class="analysis-bar-fill" id="loadBar"></div>
+          </div>
+          <span class="analysis-pct" id="loadPct">0%</span>
+        </div>
+
+        <!-- Testimonial estilo Liven -->
+        <div class="analysis-social" id="analysisSocial">
+          <div class="as-testi-stars">★★★★★</div>
+          <p class="as-testi-title">"Cambió mi manera de vivir el día a día"</p>
+          <p class="as-testi-body">Llevaba años sin poder descansar bien ni desconectarme del trabajo. Con la guía de Florecer empecé a entender qué me pasaba y cómo cambiarlo. En dos semanas dormía mejor y me sentía con otra energía.</p>
+          <div class="as-testi-author">
+            <img src="assets/descarga (10).jpeg" class="as-testi-avatar">
+            <span class="as-testi-name">Camila R., Buenos Aires</span>
+          </div>
+        </div>
+
+        <!-- Hidden ids for JS compatibility -->
+        <div style="display:none">
+          <div id="analysisGraphs"></div>
+          <span id="agEnergyVal"></span><span id="agWellnessVal"></span><span id="agSelfEsteemVal"></span>
+          <div id="agEnergy"></div><div id="agWellness"></div><div id="agSelfEsteem"></div>
+          <span id="loadMsg"></span>
+        </div>
+
+      </div>
+
+      <!-- Question overlay -->
+      <div class="aq-overlay aq-overlay-hidden" id="aqOverlay">
+        <div class="aq-modal">
+          <p class="aq-hint">Respondé para finalizar el cuestionario</p>
+          <p class="aq-text" id="aqOverlayText"></p>
+          <div class="aq-btns">
+            <button class="aq-btn aq-yes" onclick="answerAnalysis(this)">Sí</button>
+            <button class="aq-btn aq-no" onclick="answerAnalysis(this)">No</button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ===== EMAIL CAPTURE ===== -->
+    <section class="screen capture-screen" id="sEmail">
+      <div class="capture-wrap">
+        <img src="assets/logo.png" alt="FLORECER" class="logo-img capture-logo">
+        <div class="capture-card">
+          <div class="capture-icon">📧</div>
+          <h2 class="capture-title">¡Tu perfil está listo!</h2>
+          <p class="capture-sub">¿A dónde te enviamos tu plan personalizado de bienestar?</p>
+          <div class="capture-field">
+            <input type="email" id="emailInput" class="capture-input" placeholder="tucorreo@ejemplo.com" inputmode="email" autocomplete="email">
+          </div>
+          <button class="btn-capture" onclick="submitEmail()">VER MI PLAN AHORA →</button>
+          <p class="input-privacy">🔒 Tu información está 100% segura. No hacemos spam.</p>
+        </div>
+        <div class="capture-trust">
+          <span>✓ Plan en minutos</span>
+          <span>✓ Sin compromisos</span>
+          <span>✓ Acceso inmediato</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== NAME CAPTURE ===== -->
+    <section class="screen capture-screen" id="sName">
+      <div class="capture-wrap">
+        <img src="assets/logo.png" alt="FLORECER" class="logo-img capture-logo">
+        <div class="capture-card">
+          <div class="capture-icon">👋</div>
+          <h2 class="capture-title">¡Casi listo!</h2>
+          <p class="capture-sub">¿Cómo te llamás? Queremos personalizar tu plan.</p>
+          <div class="capture-field">
+            <input type="text" id="nameInput" class="capture-input" placeholder="Tu nombre" autocomplete="given-name">
+          </div>
+          <button class="btn-capture" onclick="submitName()">VER MI PLAN →</button>
+          <p class="input-privacy">Solo lo usamos para personalizar tu experiencia.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== WELLNESS CHART ===== -->
+    <section class="screen" id="sChart">
+      <div class="wchart-page">
+        <img src="assets/logo.png" alt="FLORECER" class="wchart-logo">
+        <p class="wchart-name-label" id="wchartName">Juan,</p>
+        <h2 class="wchart-title">¡Tu plan personal de<br><span class="wchart-green">bienestar</span> ya está listo!</h2>
+        <p class="wchart-sub">Tu nivel de bienestar</p>
+
+        <div class="wchart-wrap" id="wchartWrap">
+          <svg class="wchart-svg" viewBox="0 0 360 200" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="wcGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%"   stop-color="#2d8653" stop-opacity=".22"/>
+                <stop offset="100%" stop-color="#2d8653" stop-opacity="0"/>
+              </linearGradient>
+              <clipPath id="wcClip">
+                <rect id="wcClipRect" x="0" y="0" width="0" height="200"/>
+              </clipPath>
+            </defs>
+            <!-- Grid lines -->
+            <line x1="0" y1="50"  x2="360" y2="50"  class="wc-grid"/>
+            <line x1="0" y1="100" x2="360" y2="100" class="wc-grid"/>
+            <line x1="0" y1="150" x2="360" y2="150" class="wc-grid"/>
+            <!-- Fill area — clipped -->
+            <path class="wc-fill-solid" d="M 38 155 C 120 150, 200 80, 322 28 L 322 198 L 38 198 Z" clip-path="url(#wcClip)"/>
+            <!-- Main curve — clipped -->
+            <path class="wc-line-solid" d="M 38 155 C 120 150, 200 80, 322 28" clip-path="url(#wcClip)"/>
+            <!-- Dots -->
+            <circle id="wcDotToday" class="wc-dot wc-dot-today" cx="38"  cy="155" r="7"/>
+            <circle id="wcDotGoal"  class="wc-dot wc-dot-goal"  cx="322" cy="28"  r="7"/>
+          </svg>
+          <!-- Week labels -->
+          <div class="wchart-weeks">
+            <span>SEMANA 1</span><span>SEMANA 2</span><span>SEMANA 3</span><span>SEMANA 4</span>
+          </div>
+          <!-- Tooltip today -->
+          <div class="wc-tooltip wc-tooltip-today" id="wcTipToday">
+            <span class="wc-tip-label">Hoy</span>
+          </div>
+          <!-- Tooltip goal -->
+          <div class="wc-tooltip wc-tooltip-goal" id="wcTipGoal">
+            <span class="wc-tip-label">Con FLORECER</span>
+          </div>
+        </div>
+
+        <p class="wchart-disclaimer">El gráfico es ilustrativo. Los resultados pueden variar.</p>
+        <button class="btn-cont btn-cont-int wchart-btn" onclick="showSales()">Ver mi plan →</button>
+      </div>
+    </section>
+
+    <!-- ===== SALES PAGE ===== -->
+    <section class="screen" id="sSales">
+
+      <!-- STICKY COUNTDOWN BAR -->
+      <div class="sticky-countdown" id="stickyCountdown">
+        <span class="sc-text">⚡ Oferta especial — expira en</span>
+        <span class="sc-timer" id="stickyTimer">37:00</span>
+      </div>
+
+      <header class="sales-hdr">
+        <div class="sales-hdr-inner">
+          <img src="assets/logo.png" alt="FLORECER" class="logo-img">
+          <a href="#pricing" class="btn-sales-top">OBTENÉ MI PLAN</a>
+        </div>
+      </header>
+
+      <div class="sales-body">
+
+        <!-- HERO RESULT -->
+        <section class="result-hero">
+          <div class="container">
+            <h1 class="result-title" id="heroTitle">¡Tu plan de bienestar<br>personalizado ya está listo!</h1>
+            <p class="result-subtitle" id="resultSubtitle">Basado en tus respuestas, diseñamos el programa ideal para vos</p>
+          </div>
+        </section>
+
+        <!-- COMPARISON GRAPHIC -->
+        <section class="compare-section">
+          <div class="compare-outer">
+            <div class="compare-box">
+
+              <!-- TOP LABELS -->
+              <div class="cmp-top-labels">
+                <div class="cmp-label-wrap">
+                  <span class="cmp-label-now">Ahora</span>
+                </div>
+                <div class="cmp-label-wrap right">
+                  <span class="cmp-label-goal">Tu objetivo</span>
+                </div>
+              </div>
+
+              <!-- IMAGES ROW -->
+              <div class="cmp-images-row">
+                <div class="cmp-img-col">
+                  <img id="imgBefore" src="https://imagedelivery.net/yV7GQhi_zl7Pdn3EJrn61Q/5f782e13-3d7f-466c-e702-ed3c2acb4500/public" alt="Ahora" class="cmp-person-img">
+                </div>
+                <div class="cmp-chevrons">
+                  <span>&rsaquo;&rsaquo;</span>
+                </div>
+                <div class="cmp-img-col">
+                  <img id="imgAfter" src="https://imagedelivery.net/yV7GQhi_zl7Pdn3EJrn61Q/f54122bc-b4d4-4cd1-c48e-8d566ca56300/public" alt="Tu objetivo" class="cmp-person-img">
+                </div>
+              </div>
+
+              <!-- METRICS CARDS -->
+              <div class="cmp-metrics-row">
+
+                <!-- LEFT (before) -->
+                <div class="cmp-metric-card">
+                  <div class="cmp-metric">
+                    <p class="cmp-metric-name">Nivel de energía</p>
+                    <p class="cmp-metric-sub low-text">Bajo</p>
+                    <div class="cmp-hr"></div>
+                  </div>
+                  <div class="cmp-metric">
+                    <p class="cmp-metric-name">Nivel de bienestar</p>
+                    <p class="cmp-metric-sub low-text">Débil</p>
+                    <div class="cmp-segs">
+                      <div class="cmp-seg filled"></div>
+                      <div class="cmp-seg"></div>
+                      <div class="cmp-seg"></div>
+                    </div>
+                    <div class="cmp-hr"></div>
+                  </div>
+                  <div class="cmp-metric">
+                    <p class="cmp-metric-name">Nivel de autoestima</p>
+                    <p class="cmp-metric-sub low-text">Bajo</p>
+                    <div class="cmp-slider-wrap">
+                      <div class="cmp-slider-track">
+                        <div class="cmp-slider-fill" style="width:18%"></div>
+                        <div class="cmp-slider-thumb" style="left:18%"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="cmp-center-line"></div>
+
+                <!-- RIGHT (after) -->
+                <div class="cmp-metric-card">
+                  <div class="cmp-metric">
+                    <p class="cmp-metric-name">Nivel de energía</p>
+                    <p class="cmp-metric-sub high-text">Alto</p>
+                    <div class="cmp-hr"></div>
+                  </div>
+                  <div class="cmp-metric">
+                    <p class="cmp-metric-name">Nivel de bienestar</p>
+                    <p class="cmp-metric-sub high-text">Fuerte</p>
+                    <div class="cmp-segs">
+                      <div class="cmp-seg filled"></div>
+                      <div class="cmp-seg filled"></div>
+                      <div class="cmp-seg filled"></div>
+                    </div>
+                    <div class="cmp-hr"></div>
+                  </div>
+                  <div class="cmp-metric">
+                    <p class="cmp-metric-name">Nivel de autoestima</p>
+                    <p class="cmp-metric-sub high-text">Alto</p>
+                    <div class="cmp-slider-wrap">
+                      <div class="cmp-slider-track">
+                        <div class="cmp-slider-fill" style="width:88%"></div>
+                        <div class="cmp-slider-thumb" style="left:88%"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div><!-- end cmp-metrics-row -->
+            </div><!-- end compare-box -->
+          </div>
+        </section>
+
+        <!-- PRICING -->
+        <section class="pricing-section" id="pricing">
+          <div class="container">
+            <div class="scarcity-bar"><span class="scarcity-dot"></span><strong id="scarcityCount">127</strong>&nbsp;personas se unieron esta semana</div>
+            <p class="pricing-eyebrow">Comenzá hoy mismo</p>
+            <h2 class="pricing-title">Elegí tu plan</h2>
+
+            <!-- COUNTDOWN (hidden — timer lives in sticky bar) -->
+            <div class="countdown-wrap" style="display:none" aria-hidden="true">
+              <span class="countdown-label">⚡ Oferta especial disponible por:</span>
+              <span class="countdown-timer" id="countdownTimer">23:59</span>
+            </div>
+
+            <div class="pricing-grid">
+
+              <!-- TRIAL 1 SEMANA -->
+              <div class="plan-card trial-card">
+                <p class="plan-name">PRUEBA DE 1 SEMANA</p>
+                <div class="plan-price-original"><s>$24.990</s></div>
+                <div class="plan-price-wrap">
+                  <span class="plan-currency">$</span>
+                  <span class="plan-price">9.990</span>
+                </div>
+                <p class="plan-discount-badge">60% OFF hoy</p>
+                <p class="plan-per">Acceso completo por 7 días</p>
+                <ul class="plan-bullets">
+                  <li>✓ Protocolo de la primera semana completo</li>
+                  <li>✓ Técnicas para dormir mejor desde el día 1</li>
+                  <li>✓ Acceso inmediato al contenido</li>
+                </ul>
+                <button class="btn-plan" onclick="selectPlan('trial')">COMENZAR PRUEBA</button>
+                <p class="plan-compare">Menos que un café por día</p>
+              </div>
+
+              <!-- 4 SEMANAS POPULAR -->
+              <div class="plan-card popular-card">
+                <div class="popular-badge">⭐ MÁS POPULAR</div>
+                <p class="plan-name">PLAN DE 4 SEMANAS</p>
+                <div class="plan-price-original"><s>$49.990</s></div>
+                <div class="plan-price-wrap">
+                  <span class="plan-currency">$</span>
+                  <span class="plan-price">24.990</span>
+                </div>
+                <p class="plan-discount-badge popular-disc">50% OFF hoy</p>
+                <p class="plan-per">Acceso completo por 4 semanas</p>
+                <p class="plan-cuotas">o 3 cuotas sin interés de <strong>$8.330</strong></p>
+                <ul class="plan-bullets">
+                  <li>✓ Rompe los ciclos de ansiedad y baja energía</li>
+                  <li>✓ Técnicas respaldadas por neurociencia</li>
+                  <li>✓ El plan más elegido por personas con tu perfil</li>
+                </ul>
+                <button class="btn-plan btn-plan-popular" onclick="selectPlan('4weeks')">OBTENER PLAN</button>
+                <p class="plan-compare">Equivale a media sesión de psicólogo</p>
+              </div>
+
+              <!-- 12 SEMANAS -->
+              <div class="plan-card">
+                <div class="best-value-badge">💎 MEJOR VALOR</div>
+                <p class="plan-name">PLAN DE 12 SEMANAS</p>
+                <div class="plan-price-original"><s>$99.990</s></div>
+                <div class="plan-price-wrap">
+                  <span class="plan-currency">$</span>
+                  <span class="plan-price">49.990</span>
+                </div>
+                <p class="plan-discount-badge">50% OFF hoy</p>
+                <p class="plan-per">Transformación completa de 12 semanas</p>
+                <p class="plan-cuotas">o 3 cuotas sin interés de <strong>$16.663</strong></p>
+                <ul class="plan-bullets">
+                  <li>✓ Sistema de vida completo y sostenible</li>
+                  <li>✓ Neuroplasticidad y hábitos avanzados</li>
+                  <li>✓ Identidad, enfoque y equilibrio total</li>
+                </ul>
+                <button class="btn-plan btn-plan-12" onclick="selectPlan('12weeks')">OBTENER PLAN</button>
+                <p class="plan-compare">Menos que 2 sesiones de psicólogo</p>
+              </div>
+
+            </div>
+            <p class="pricing-guarantee-note">🔒 Garantía de devolución de 30 días por WhatsApp · Pago seguro · Acceso inmediato</p>
+          </div>
+        </section>
+
+        <!-- GOALS -->
+        <section class="goals-section">
+          <div class="container">
+            <h2 class="section-title">Con FLORECER vas a lograr</h2>
+            <div class="goals-list">
+              <div class="goal-item"><span class="goal-check">✓</span><span>Despertarte lleno/a de energía para empezar cada día</span></div>
+              <div class="goal-item"><span class="goal-check">✓</span><span>No quedarte atrapado/a en la ansiedad ni en el estrés</span></div>
+              <div class="goal-item"><span class="goal-check">✓</span><span>Mejorar tu equilibrio emocional y tu autoconfianza</span></div>
+              <div class="goal-item"><span class="goal-check">✓</span><span>Aumentar tu nivel de energía y alcanzar tus metas</span></div>
+              <div class="goal-item"><span class="goal-check">✓</span><span>Sentirte tranquilo/a y relajado/a durante el día</span></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- STATS -->
+        <section class="stats-section">
+          <div class="container">
+            <p class="section-eyebrow">Resultados comprobados</p>
+            <h2 class="section-title" style="color:#fff;">¿Por qué personas como vos logran excelentes resultados con el Plan de Gestión del Bienestar FLORECER?</h2>
+            <div class="stats-grid">
+              <div class="stat-card reveal">
+                <div class="stat-number">83%</div>
+                <p class="stat-desc">de los usuarios mejoró su bienestar después de 6 a 8 semanas</p>
+              </div>
+              <div class="stat-card reveal">
+                <div class="stat-number">77%</div>
+                <p class="stat-desc">de los usuarios comenzó con niveles de energía similares a los tuyos</p>
+              </div>
+              <div class="stat-card reveal">
+                <div class="stat-number">45%</div>
+                <p class="stat-desc">mejor rendimiento diario reportado después del primer mes</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PROBLEMS -->
+        <section class="problems-section">
+          <div class="container">
+            <h2 class="section-title">Muchas personas sufren los mismos problemas que vos</h2>
+            <div class="problems-grid">
+              <div class="problem-item reveal"><span class="prob-icon">😔</span><span>Sentirse culpable por no ser productivo/a</span></div>
+              <div class="problem-item reveal"><span class="prob-icon">💭</span><span>Quedarse atrapado/a en pensamientos negativos</span></div>
+              <div class="problem-item reveal"><span class="prob-icon">😤</span><span>Sentirse incómodo/a cuando hay tiempo libre</span></div>
+              <div class="problem-item reveal"><span class="prob-icon">📱</span><span>Revisar compulsivamente el teléfono o redes sociales</span></div>
+              <div class="problem-item reveal"><span class="prob-icon">🌙</span><span>Sentirse cansado/a pero con insomnio por las noches</span></div>
+              <div class="problem-item reveal"><span class="prob-icon">🌿</span><span>Sentirse tenso/a sin poder relajarse</span></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CHART -->
+        <section class="chart-section">
+          <div class="container">
+            <p class="section-eyebrow">Evolución comprobada</p>
+            <h2 class="section-title">Así mejoran nuestros usuarios semana a semana</h2>
+            <div class="chart-wrap">
+              <div class="chart-bars" id="chartBars">
+                <div class="chart-col"><div class="chart-bar-wrap"><div class="chart-bar" style="--h:15%"><span class="bar-val">15%</span></div></div><span class="bar-label">Sem 1</span></div>
+                <div class="chart-col"><div class="chart-bar-wrap"><div class="chart-bar" style="--h:28%"><span class="bar-val">28%</span></div></div><span class="bar-label">Sem 2</span></div>
+                <div class="chart-col"><div class="chart-bar-wrap"><div class="chart-bar" style="--h:42%"><span class="bar-val">42%</span></div></div><span class="bar-label">Sem 3</span></div>
+                <div class="chart-col"><div class="chart-bar-wrap"><div class="chart-bar" style="--h:55%"><span class="bar-val">55%</span></div></div><span class="bar-label">Sem 4</span></div>
+                <div class="chart-col"><div class="chart-bar-wrap"><div class="chart-bar" style="--h:63%"><span class="bar-val">63%</span></div></div><span class="bar-label">Sem 5</span></div>
+                <div class="chart-col"><div class="chart-bar-wrap"><div class="chart-bar" style="--h:72%"><span class="bar-val">72%</span></div></div><span class="bar-label">Sem 6</span></div>
+                <div class="chart-col"><div class="chart-bar-wrap"><div class="chart-bar" style="--h:80%"><span class="bar-val">80%</span></div></div><span class="bar-label">Sem 7</span></div>
+                <div class="chart-col"><div class="chart-bar-wrap"><div class="chart-bar" style="--h:88%"><span class="bar-val">88%</span></div></div><span class="bar-label">Sem 8</span></div>
+              </div>
+              <p class="chart-label-y">Nivel de bienestar (%)</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- TESTIMONIALS -->
+        <section class="testimonials-section">
+          <div class="container">
+            <p class="section-eyebrow">Historias reales</p>
+            <h2 class="section-title">Lo que dicen nuestros usuarios</h2>
+            <div class="testi-grid">
+              <div class="testi-card reveal">
+                <div class="testi-top">
+                  <img src="assets/descarga.jpeg" alt="Sofía M." class="testi-avatar">
+                  <div>
+                    <p class="testi-name">Sofía M. <span class="testi-city">· Buenos Aires</span></p>
+                    <div class="testi-stars">★★★★★</div>
+                    <span class="testi-verified">✓ Compra verificada</span>
+                  </div>
+                </div>
+                <p class="testi-text">"Llevaba meses sin poder desconectarme del trabajo. En la primera semana ya dormía mejor y me levantaba con otra energía. No lo podía creer."</p>
+              </div>
+              <div class="testi-card reveal">
+                <div class="testi-top">
+                  <img src="assets/descarga (4).jpeg" alt="Diego R." class="testi-avatar">
+                  <div>
+                    <p class="testi-name">Diego R. <span class="testi-city">· Córdoba</span></p>
+                    <div class="testi-stars">★★★★★</div>
+                    <span class="testi-verified">✓ Compra verificada</span>
+                  </div>
+                </div>
+                <p class="testi-text">"Bajé mi nivel de ansiedad, recuperé energía real y dejé de procrastinar. El contenido está muy bien armado. Sólido de punta a punta."</p>
+              </div>
+              <div class="testi-card reveal">
+                <div class="testi-top">
+                  <img src="assets/descarga (6).jpeg" alt="Valentina C." class="testi-avatar">
+                  <div>
+                    <p class="testi-name">Valentina C. <span class="testi-city">· Rosario</span></p>
+                    <div class="testi-stars">★★★★★</div>
+                    <span class="testi-verified">✓ Compra verificada</span>
+                  </div>
+                </div>
+                <p class="testi-text">"No es teoría vacía. Son herramientas que usás ese mismo día. Me sorprendió lo bien estructurado que está. Lo recomiendo a todo el mundo."</p>
+              </div>
+              <div class="testi-card reveal">
+                <div class="testi-top">
+                  <img src="assets/descarga (5).jpeg" alt="Marcos T." class="testi-avatar">
+                  <div>
+                    <p class="testi-name">Marcos T. <span class="testi-city">· Mendoza</span></p>
+                    <div class="testi-stars">★★★★★</div>
+                    <span class="testi-verified">✓ Compra verificada</span>
+                  </div>
+                </div>
+                <p class="testi-text">"La mejor inversión del año. Cambié hábitos que tenía hace 10 años. Es de esas compras que no podés creer no haber hecho antes."</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="faq-section">
+          <div class="container">
+            <p class="section-eyebrow">Preguntas frecuentes</p>
+            <h2 class="section-title">¿Tenés dudas?</h2>
+            <div class="faq-list">
+              <div class="faq-item">
+                <button class="faq-q" onclick="toggleFaq(this)">¿Qué pasa si no logro mantener la constancia necesaria?<span class="faq-arrow">+</span></button>
+                <div class="faq-a"><p>Entendemos que la vida cotidiana incluye múltiples obligaciones. Por eso, nuestro plan está diseñado para que puedas incorporarlo gradualmente: te acompañamos paso a paso para mantenerte motivado/a. Contás con soporte continuo para cuando más lo necesitás.</p></div>
+              </div>
+              <div class="faq-item">
+                <button class="faq-q" onclick="toggleFaq(this)">¿Qué pasa si me siento abrumado/a al comenzar?<span class="faq-arrow">+</span></button>
+                <div class="faq-a"><p>No se trata de hacer todo a la vez. Tenés un camino personalizado que va a tu ritmo: pequeños pasos que acumulan grandes cambios. Nuestro equipo está disponible para acompañarte en cada etapa del proceso.</p></div>
+              </div>
+              <div class="faq-item">
+                <button class="faq-q" onclick="toggleFaq(this)">¿Lo que ofrece FLORECER es diferente a otras apps de bienestar?<span class="faq-arrow">+</span></button>
+                <div class="faq-a"><p>A diferencia de otras aplicaciones, nuestros programas están desarrollados en base a evidencia científica. Combinamos técnicas de psicología positiva, mindfulness y neurociencia para abordar tus necesidades específicas, atacando las raíces de tus síntomas.</p></div>
+              </div>
+              <div class="faq-item">
+                <button class="faq-q" onclick="toggleFaq(this)">¿Es seguro? ¿Está basado en evidencia científica?<span class="faq-arrow">+</span></button>
+                <div class="faq-a"><p>Sí. Todo el contenido de FLORECER está basado en evidencia científica sólida. Nuestro equipo de profesionales en psicología, neurociencia y bienestar revisó y aprobó cada módulo del programa.</p></div>
+              </div>
+              <div class="faq-item">
+                <button class="faq-q" onclick="toggleFaq(this)">¿Cómo funciona la garantía de 30 días?<span class="faq-arrow">+</span></button>
+                <div class="faq-a"><p>Si en los primeros 30 días no estás satisfecho/a con los resultados, te devolvemos el 100% de tu dinero sin preguntas. Simplemente contactá a nuestro equipo de soporte y procesamos el reembolso de inmediato.</p></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECOND PRICING CTA -->
+        <section class="pricing-section second-cta" id="pricing2">
+          <div class="container">
+            <p class="section-eyebrow">Empezá tu transformación hoy</p>
+            <h2 class="pricing-title">¡Tu plan personalizado<br>ya está listo!</h2>
+            <div class="countdown-wrap">
+              <span class="countdown-label">⚡ Oferta expira en:</span>
+              <span class="countdown-timer" id="countdownTimer2">23:59</span>
+            </div>
+            <div class="pricing-grid">
+              <div class="plan-card trial-card">
+                <p class="plan-name">PRUEBA DE 1 SEMANA</p>
+                <div class="plan-price-original"><s>$24.990</s></div>
+                <div class="plan-price-wrap"><span class="plan-currency">$</span><span class="plan-price">9.990</span></div>
+                <p class="plan-discount-badge">60% OFF hoy</p>
+                <p class="plan-per">Acceso completo por 7 días</p>
+                <button class="btn-plan" onclick="selectPlan('trial')">COMENZAR PRUEBA</button>
+              </div>
+              <div class="plan-card popular-card">
+                <div class="popular-badge">⭐ MÁS POPULAR</div>
+                <p class="plan-name">PLAN DE 4 SEMANAS</p>
+                <div class="plan-price-original"><s>$49.990</s></div>
+                <div class="plan-price-wrap"><span class="plan-currency">$</span><span class="plan-price">24.990</span></div>
+                <p class="plan-discount-badge popular-disc">50% OFF hoy</p>
+                <p class="plan-per">Acceso completo por 4 semanas</p>
+                <p class="plan-cuotas">o 3 cuotas sin interés de <strong>$8.330</strong></p>
+                <button class="btn-plan btn-plan-popular" onclick="selectPlan('4weeks')">OBTENER PLAN</button>
+              </div>
+              <div class="plan-card">
+                <div class="best-value-badge">💎 MEJOR VALOR</div>
+                <p class="plan-name">PLAN DE 12 SEMANAS</p>
+                <div class="plan-price-original"><s>$99.990</s></div>
+                <div class="plan-price-wrap"><span class="plan-currency">$</span><span class="plan-price">49.990</span></div>
+                <p class="plan-discount-badge">50% OFF hoy</p>
+                <p class="plan-per">Transformación completa</p>
+                <p class="plan-cuotas">o 3 cuotas sin interés de <strong>$16.663</strong></p>
+                <button class="btn-plan btn-plan-12" onclick="selectPlan('12weeks')">OBTENER PLAN</button>
+              </div>
+            </div>
+            <p class="pricing-guarantee-note">🔒 Garantía de devolución de 30 días por WhatsApp · Pago seguro</p>
+          </div>
+        </section>
+
+        <!-- GUARANTEE -->
+        <section class="guarantee-section">
+          <div class="container">
+            <div class="guarantee-box-big reveal">
+              <div class="gbb-badge">🛡️</div>
+              <h2 class="gbb-title">Garantía total de 30 días</h2>
+              <p class="gbb-sub">Si en 30 días no sentís ninguna mejora, te devolvemos el <strong>100% de tu dinero</strong>. Sin preguntas, sin vueltas. Solo mandanos un mensaje por WhatsApp.</p>
+              <div class="gbb-items">
+                <div class="gbb-item">✓ Sin burocracia</div>
+                <div class="gbb-item">✓ Devolución inmediata</div>
+                <div class="gbb-item">✓ Sin preguntas</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="sales-footer">
+          <div class="container">
+            <div class="footer-logo"><img src="assets/logo.png" alt="FLORECER" class="footer-logo-img"></div>
+            <div class="footer-links">
+              <a href="#">Política de privacidad</a>
+              <a href="#">Términos y condiciones</a>
+              <a href="#">Contacto</a>
+              <a href="#">Preguntas frecuentes</a>
+            </div>
+            <p class="footer-legal">© 2025 FLORECER. Todos los derechos reservados. Los resultados pueden variar de persona a persona. Lea nuestra <a href="#">Política de Privacidad</a>.</p>
+          </div>
+        </footer>
+
+      </div>
+    </section>
+
+    <!-- ===== UPSELL POST-COMPRA ===== -->
+    <section class="screen" id="sUpsell">
+      <div class="upsell-page">
+        <img src="assets/logo.png" alt="FLORECER" class="upsell-logo">
+        <div class="upsell-badge">🎉 ¡Compra confirmada!</div>
+        <h2 class="upsell-title">Antes de empezar,<br>tenemos una <em>oferta única</em> para vos.</h2>
+        <p class="upsell-sub" id="upsellSub">Como acabás de unirte, podés acceder al plan completo por solo la diferencia — una sola vez.</p>
+
+        <div class="upsell-card">
+          <div class="upsell-card-top">
+            <span class="upsell-tag">OFERTA EXCLUSIVA POST-COMPRA</span>
+            <p class="upsell-plan-name" id="upsellPlanName">Plan de 12 Semanas</p>
+            <div class="upsell-price-row">
+              <span class="upsell-original" id="upsellOriginal">$99.990</span>
+              <span class="upsell-price" id="upsellPrice">$29.990</span>
+            </div>
+            <p class="upsell-saving" id="upsellSaving">Ahorrás $70.000 — solo disponible ahora</p>
+          </div>
+          <ul class="upsell-bullets" id="upsellBullets">
+            <li>✓ Transformación completa de 12 semanas</li>
+            <li>✓ Sistema de hábitos avanzados</li>
+            <li>✓ Técnicas de neuroplasticidad</li>
+            <li>✓ Acceso inmediato</li>
+          </ul>
+          <button class="btn-upsell" id="upsellBtn" onclick="acceptUpsell()">SÍ, QUIERO EL PLAN COMPLETO →</button>
+          <button class="btn-upsell-skip" onclick="skipUpsell()">No, prefiero solo mi plan actual</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
