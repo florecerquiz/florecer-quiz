@@ -7,8 +7,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="assets/logo.png">
-  <link rel="icon" type="image/png" href="assets/favicono.png">
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="icon" type="image/png" href="favicono.png">
   <link rel="stylesheet" href="styles.css">
 
   <!-- Meta Pixel -->
@@ -724,26 +724,26 @@
                 <div class="cmp-metric-card">
                   <div class="cmp-metric">
                     <p class="cmp-metric-name">Nivel de energía</p>
-                    <p class="cmp-metric-sub low-text">Bajo</p>
+                    <p class="cmp-metric-sub low-text" id="metricEnergia">Bajo</p>
                     <div class="cmp-hr"></div>
                   </div>
                   <div class="cmp-metric">
                     <p class="cmp-metric-name">Nivel de bienestar</p>
-                    <p class="cmp-metric-sub low-text">Débil</p>
+                    <p class="cmp-metric-sub low-text" id="metricBienestar">Débil</p>
                     <div class="cmp-segs">
                       <div class="cmp-seg filled"></div>
-                      <div class="cmp-seg"></div>
+                      <div class="cmp-seg" id="segExtra"></div>
                       <div class="cmp-seg"></div>
                     </div>
                     <div class="cmp-hr"></div>
                   </div>
                   <div class="cmp-metric">
                     <p class="cmp-metric-name">Nivel de autoestima</p>
-                    <p class="cmp-metric-sub low-text">Bajo</p>
+                    <p class="cmp-metric-sub low-text" id="metricAutoestima">Bajo</p>
                     <div class="cmp-slider-wrap">
                       <div class="cmp-slider-track">
-                        <div class="cmp-slider-fill" style="width:18%"></div>
-                        <div class="cmp-slider-thumb" style="left:18%"></div>
+                        <div class="cmp-slider-fill" id="sliderFill" style="width:18%"></div>
+                        <div class="cmp-slider-thumb" id="sliderThumb" style="left:18%"></div>
                       </div>
                     </div>
                   </div>
@@ -809,11 +809,12 @@
                   <span class="plan-price">9.990</span>
                 </div>
                 <p class="plan-discount-badge">60% OFF hoy</p>
-                <p class="plan-per">Acceso completo por 7 días</p>
+                <p class="plan-per">7 días de programa completo</p>
                 <ul class="plan-bullets">
-                  <li>✓ Protocolo de la primera semana completo</li>
-                  <li>✓ Técnicas para dormir mejor desde el día 1</li>
-                  <li>✓ Acceso inmediato al contenido</li>
+                  <li>✓ Acceso inmediato al programa</li>
+                  <li>✓ 15 minutos por día</li>
+                  <li>✓ Técnicas con respaldo científico</li>
+                  <li>✓ Seguimiento personalizado por WhatsApp</li>
                 </ul>
                 <button class="btn-plan" onclick="selectPlan('trial')">COMENZAR PRUEBA</button>
                 <p class="plan-compare">Menos que un café por día</p>
@@ -829,12 +830,13 @@
                   <span class="plan-price">24.990</span>
                 </div>
                 <p class="plan-discount-badge popular-disc">50% OFF hoy</p>
-                <p class="plan-per">Acceso completo por 4 semanas</p>
+                <p class="plan-per">4 semanas de programa completo</p>
                 <p class="plan-cuotas">o 3 cuotas sin interés de <strong>$8.330</strong></p>
                 <ul class="plan-bullets">
-                  <li>✓ Rompe los ciclos de ansiedad y baja energía</li>
-                  <li>✓ Técnicas respaldadas por neurociencia</li>
-                  <li>✓ El plan más elegido por personas con tu perfil</li>
+                  <li>✓ Acceso inmediato al programa</li>
+                  <li>✓ 15 minutos por día</li>
+                  <li>✓ Técnicas con respaldo científico</li>
+                  <li>✓ Seguimiento personalizado por WhatsApp</li>
                 </ul>
                 <button class="btn-plan btn-plan-popular" onclick="selectPlan('4weeks')">OBTENER PLAN</button>
                 <p class="plan-compare">Equivale a media sesión de psicólogo</p>
@@ -850,12 +852,13 @@
                   <span class="plan-price">49.990</span>
                 </div>
                 <p class="plan-discount-badge">50% OFF hoy</p>
-                <p class="plan-per">Transformación completa de 12 semanas</p>
+                <p class="plan-per">12 semanas de programa completo</p>
                 <p class="plan-cuotas">o 3 cuotas sin interés de <strong>$16.663</strong></p>
                 <ul class="plan-bullets">
-                  <li>✓ Sistema de vida completo y sostenible</li>
-                  <li>✓ Neuroplasticidad y hábitos avanzados</li>
-                  <li>✓ Identidad, enfoque y equilibrio total</li>
+                  <li>✓ Acceso inmediato al programa</li>
+                  <li>✓ 15 minutos por día</li>
+                  <li>✓ Técnicas con respaldo científico</li>
+                  <li>✓ Seguimiento personalizado por WhatsApp</li>
                 </ul>
                 <button class="btn-plan btn-plan-12" onclick="selectPlan('12weeks')">OBTENER PLAN</button>
                 <p class="plan-compare">Menos que 2 sesiones de psicólogo</p>
@@ -1102,28 +1105,26 @@
     <section class="screen" id="sUpsell">
       <div class="upsell-page">
         <img src="assets/logo.png" alt="FLORECER" class="upsell-logo">
-        <div class="upsell-badge">🎉 ¡Compra confirmada!</div>
-        <h2 class="upsell-title">Antes de empezar,<br>tenemos una <em>oferta única</em> para vos.</h2>
-        <p class="upsell-sub" id="upsellSub">Como acabás de unirte, podés acceder al plan completo por solo la diferencia — una sola vez.</p>
+        <div class="upsell-badge">✓ Compra confirmada</div>
+        <h2 class="upsell-title">Una última cosa<br>antes de empezar.</h2>
+        <p class="upsell-sub" id="upsellSub">Podés extender tu plan ahora, pagando solo la diferencia. Esta oferta es exclusiva y no va a estar disponible después.</p>
 
         <div class="upsell-card">
           <div class="upsell-card-top">
-            <span class="upsell-tag">OFERTA EXCLUSIVA POST-COMPRA</span>
             <p class="upsell-plan-name" id="upsellPlanName">Plan de 12 Semanas</p>
             <div class="upsell-price-row">
-              <span class="upsell-original" id="upsellOriginal">$99.990</span>
+              <span class="upsell-original" id="upsellOriginal">$54.990</span>
               <span class="upsell-price" id="upsellPrice">$29.990</span>
             </div>
-            <p class="upsell-saving" id="upsellSaving">Ahorrás $70.000 — solo disponible ahora</p>
+            <p class="upsell-saving" id="upsellSaving">Pagás solo la diferencia — ahorro de $25.000</p>
           </div>
           <ul class="upsell-bullets" id="upsellBullets">
-            <li>✓ Transformación completa de 12 semanas</li>
-            <li>✓ Sistema de hábitos avanzados</li>
-            <li>✓ Técnicas de neuroplasticidad</li>
+            <li>✓ Mismo programa, más semanas</li>
             <li>✓ Acceso inmediato</li>
+            <li>✓ Seguimiento por WhatsApp incluido</li>
           </ul>
-          <button class="btn-upsell" id="upsellBtn" onclick="acceptUpsell()">SÍ, QUIERO EL PLAN COMPLETO →</button>
-          <button class="btn-upsell-skip" onclick="skipUpsell()">No, prefiero solo mi plan actual</button>
+          <button class="btn-upsell" id="upsellBtn" onclick="acceptUpsell()">Sí, extender mi plan →</button>
+          <button class="btn-upsell-skip" onclick="skipUpsell()">No, quedarse con el plan actual</button>
         </div>
       </div>
     </section>
