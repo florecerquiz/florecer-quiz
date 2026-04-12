@@ -453,6 +453,8 @@ function answerAnalysis(btn) {
 }
 
 function _finishAnalysis() {
+  // Meta Pixel — CompleteRegistration (terminó el quiz)
+  if (typeof fbq !== 'undefined') fbq('track', 'CompleteRegistration', { content_name: 'Florecer Quiz Completado' });
   setTimeout(() => goTo(SCREENS.indexOf('sEmail')), 1200);
 }
 
@@ -536,6 +538,8 @@ function updateCompareChart(scores) {
 // SHOW SALES + PERSONALIZE
 // =========================================================
 function showSales() {
+  // Meta Pixel — ViewContent (ve la página de venta)
+  if (typeof fbq !== 'undefined') fbq('track', 'ViewContent', { content_name: 'Florecer Sales Page' });
   goTo(SCREENS.indexOf('sSales'));
 
   // Resultado personalizado por perfil dominante
@@ -854,6 +858,8 @@ function _populateUpsell(plan) {
 }
 
 function acceptUpsell() {
+  // Meta Pixel — AddToCart (acepta el upsell)
+  if (typeof fbq !== 'undefined') fbq('track', 'AddToCart', { content_name: 'Upsell Aceptado', currency: 'ARS' });
   const cfg = UPSELL_CONFIG[_selectedPlan];
   _goToTN(cfg ? cfg.upsellPlan : '12weeks-upsell');
 }
