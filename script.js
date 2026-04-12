@@ -99,6 +99,9 @@ function goTo(idx) {
   currentIdx = idx;
   updateHeader(id);
 
+  // Personalizar pantalla sistema nervioso con los síntomas reales del usuario
+  if (id === 'sIdent3b') setTimeout(personalizeIdent3b, 50);
+
   // Clear any pending auto-advance when navigating away manually
   if (_autoAdvTimer) clearTimeout(_autoAdvTimer);
 }
@@ -459,6 +462,33 @@ function _finishAnalysis() {
 }
 
 // =========================================================
+// PERSONALIZAR PANTALLA SISTEMA NERVIOSO (sIdent3b)
+// =========================================================
+function personalizeIdent3b() {
+  const selected = (multiAnswers['anx'] || []).filter(v => v !== 'none');
+  const bodyEl = document.getElementById('anxIntBody');
+  if (!bodyEl || selected.length === 0) return;
+
+  const labels = {
+    nails:     'morderte las uñas o la piel sin querer',
+    eat:       'comer por nervios aunque no tengas hambre',
+    phone:     'revisar el celular compulsivamente',
+    jaw:       'apretar la mandíbula sin darte cuenta',
+    stomach:   'el estómago revuelto cuando hay tensión',
+    sigh:      'suspirar seguido o sentir que falta el aire',
+    control:   'necesitar tener todo bajo control',
+    irritable: 'irritarte por cosas pequeñas que antes no te molestaban'
+  };
+
+  const items = selected.slice(0, 2).map(v => labels[v]).filter(Boolean);
+  if (items.length === 0) return;
+
+  const listed = items.length === 2 ? `${items[0]} y ${items[1]}` : items[0];
+  const capitalized = listed.charAt(0).toUpperCase() + listed.slice(1);
+  bodyEl.textContent = `${capitalized} — eso no son "manías" ni debilidad. Son señales físicas de que tu cuerpo lleva demasiado tiempo en modo alerta. Y eso tiene solución.`;
+}
+
+// =========================================================
 // SCORES: calculate from answers
 // =========================================================
 function calcScores() {
@@ -512,19 +542,42 @@ function animateAgBar(id, pct, labelEl, label) {
 }
 
 function updateCompareChart(scores) {
-  // LEFT side ("Ahora") — valores reales bajos para mostrar contraste
-  const energyLow = document.querySelector('#sSales .cmp-metric-card:first-child .cmp-metric:nth-child(1) .cmp-metric-sub');
-  if (energyLow) { energyLow.textContent = currentLabel(scores.energy); energyLow.className = 'cmp-metric-sub low-text'; }
+  // Calcular 5 dimensiones y mostrar las 3 peores del usuario
+  const get2 = (k) => parseInt(answers[k]) || 2;
+  const dims = [
+    { score: (get2(2)+get2(4))/8*100, nameBef:'Nivel de energía',      nameAft:'Energía y vitalidad',    lblLow:'Bajo',     lblHigh:'Alto' },
+    { score: (get2(5)+get2(6))/8*100, nameBef:'Calidad del sueño',     nameAft:'Descanso reparador',     lblLow:'Mala',     lblHigh:'Profundo' },
+    { score: (get2(3)+get2(7))/8*100, nameBef:'Estrés y ansiedad',     nameAft:'Calma interior',         lblLow:'Alto',     lblHigh:'Bajo' },
+    { score: get2(10)/4*100,           nameBef:'Foco y concentración',  nameAft:'Claridad mental',        lblLow:'Difuso',   lblHigh:'Enfocado' },
+    { score: get2(8)/4*100,            nameBef:'Relaciones personales', nameAft:'Vínculos equilibrados',  lblLow:'Afectado', lblHigh:'Fluido' }
+  ];
+  dims.sort((a, b) => a.score - b.score);
+  const worst3 = dims.slice(0, 3);
 
-  const wellnessLow = document.querySelector('#sSales .cmp-metric-card:first-child .cmp-metric:nth-child(2) .cmp-metric-sub');
-  if (wellnessLow) { wellnessLow.textContent = currentLabel(scores.wellness); wellnessLow.className = 'cmp-metric-sub low-text'; }
+  // Actualizar nombres y labels de las 3 filas con las peores dimensiones del usuario
+  const metCards = document.querySelectorAll('#sSales .cmp-metric-card');
+  if (metCards.length >= 2) {
+    const befMetrics = metCards[0].querySelectorAll('.cmp-metric');
+    const aftMetrics = metCards[1].querySelectorAll('.cmp-metric');
+    worst3.forEach((d, i) => {
+      if (befMetrics[i]) {
+        const nm = befMetrics[i].querySelector('.cmp-metric-name');
+        const sb = befMetrics[i].querySelector('.cmp-metric-sub');
+        if (nm) nm.textContent = d.nameBef;
+        if (sb) { sb.textContent = d.lblLow; sb.className = 'cmp-metric-sub low-text'; }
+      }
+      if (aftMetrics[i]) {
+        const nm = aftMetrics[i].querySelector('.cmp-metric-name');
+        const sb = aftMetrics[i].querySelector('.cmp-metric-sub');
+        if (nm) nm.textContent = d.nameAft;
+        if (sb) { sb.textContent = d.lblHigh; sb.className = 'cmp-metric-sub high-text'; }
+      }
+    });
+  }
 
   // Segs "Ahora": siempre 1 de 3 llenado (visualmente malo)
   const segs = document.querySelectorAll('#sSales .cmp-metric-card:first-child .cmp-segs .cmp-seg');
   segs.forEach((seg, i) => seg.classList.toggle('filled', i < 1));
-
-  const selfLow = document.querySelector('#sSales .cmp-metric-card:first-child .cmp-metric:nth-child(3) .cmp-metric-sub');
-  if (selfLow) { selfLow.textContent = currentLabel(scores.selfEsteem); selfLow.className = 'cmp-metric-sub low-text'; }
 
   // Slider "Ahora": cap en 22% para que siempre se vea bajo
   const nowSliderPct = Math.min(22, Math.round(scores.selfEsteem * 0.25));
@@ -590,7 +643,32 @@ function showSales() {
   const heroTitle = document.getElementById('heroTitle');
   if (heroTitle) heroTitle.textContent = p.title;
   const subtitle = document.getElementById('resultSubtitle');
-  if (subtitle) subtitle.textContent = p.subtitle + prevNote;
+
+  // Personalizar con origen del estrés (q12) y objetivo (q13)
+  const stressLabels = {
+    work:     'el trabajo y las responsabilidades laborales',
+    family:   'las relaciones familiares o de pareja',
+    money:    'la incertidumbre económica',
+    overload: 'tener demasiado para hacer y poco tiempo',
+    unknown:  'un agotamiento sin una causa clara'
+  };
+  const goalLabels = {
+    energy:  'recuperar energía y vitalidad',
+    calm:    'encontrar calma y reducir el estrés',
+    emotion: 'mejorar tu estado emocional',
+    sleep:   'mejorar la calidad de tu sueño',
+    focus:   'aumentar tu foco y productividad',
+    all:     'lograr una transformación completa'
+  };
+  const stressStr = stressLabels[answers[12]];
+  const goalStr   = goalLabels[answers[13]];
+  let extraLine = '';
+  if (stressStr && goalStr) {
+    extraLine = ` Lo que más te pesa es ${stressStr}, y tu objetivo es ${goalStr}.`;
+  } else if (goalStr) {
+    extraLine = ` Tu objetivo principal es ${goalStr}.`;
+  }
+  if (subtitle) subtitle.textContent = p.subtitle + prevNote + extraLine;
 
   // Scarcity counter — semi-random between 118 and 147
   const sc = document.getElementById('scarcityCount');
@@ -737,6 +815,20 @@ function initWellnessChart(name) {
   const dotToday = document.getElementById('wcDotToday');
   const dotGoal  = document.getElementById('wcDotGoal');
 
+  // Curva dinámica según el score total del usuario
+  // avgScore bajo → curva arranca muy abajo (gran caída → gran mejora visual)
+  // avgScore alto → curva arranca más arriba (mejora moderada)
+  const sc = calcScores();
+  const avgScore = (sc.energy + sc.wellness + sc.selfEsteem) / 3;
+  const startY   = Math.round(178 - (avgScore / 100) * 60); // rango 118–178
+  const cp1y     = startY - 6;
+  const cp2y     = Math.round(28 + (startY - 28) * 0.35);
+  const wcLine   = document.querySelector('#sChart .wc-line-solid');
+  const wcFill   = document.querySelector('#sChart .wc-fill-solid');
+  if (wcLine) wcLine.setAttribute('d', `M 38 ${startY} C 120 ${cp1y}, 200 ${cp2y}, 322 28`);
+  if (wcFill) wcFill.setAttribute('d', `M 38 ${startY} C 120 ${cp1y}, 200 ${cp2y}, 322 28 L 322 198 L 38 198 Z`);
+  if (dotToday) dotToday.setAttribute('cy', startY);
+
   // Reset
   if (clipRect) clipRect.setAttribute('width', '0');
   if (tipToday) tipToday.classList.remove('wc-tip-visible');
@@ -771,13 +863,13 @@ function initWellnessChart(name) {
 // COUNTDOWN TIMER — 37 minutos
 // =========================================================
 function startCountdown() {
-  const stored = sessionStorage.getItem('flCountdownEnd');
+  const stored = localStorage.getItem('flCountdownEnd');
   let endTime;
   if (stored) {
     endTime = parseInt(stored);
   } else {
     endTime = Date.now() + 37 * 60 * 1000; // 37 minutos
-    sessionStorage.setItem('flCountdownEnd', endTime);
+    localStorage.setItem('flCountdownEnd', endTime);
   }
 
   function update() {
