@@ -486,13 +486,13 @@ function scoreLabel(score, type) {
   return score + '%';
 }
 
-// currentLabel — para columna "Ahora" (varía entre Muy bajo, Bajo y Moderado)
+// currentLabel — para columna "Ahora" (varía entre Bajo y Moderado)
 function currentLabel(score) {
   const penalized = score - 25;
   const r = Math.random();
-  if (penalized <= 20) return r < 0.6 ? 'Muy bajo' : 'Bajo';
-  if (penalized <= 40) return r < 0.5 ? 'Bajo' : (r < 0.8 ? 'Muy bajo' : 'Moderado');
-  return r < 0.5 ? 'Bajo' : (r < 0.85 ? 'Moderado' : 'Muy bajo');
+  if (penalized <= 20) return r < 0.8 ? 'Bajo' : 'Moderado';
+  if (penalized <= 40) return r < 0.5 ? 'Bajo' : 'Moderado';
+  return r < 0.4 ? 'Bajo' : 'Moderado';
 }
 
 function animateAgBar(id, pct, labelEl, label) {
