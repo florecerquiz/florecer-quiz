@@ -330,7 +330,7 @@
       <div class="quiz-wrap ident-wrap">
         <button class="back-btn" onclick="prevScreen()">← Volver</button>
         <p class="ident-eyebrow">¿Qué tanto te identificás?</p>
-        <h2 class="q-title ident-quote">"Siento que no me cuido como debería y que mi bienestar merece más atención."</h2>
+        <h2 class="q-title ident-quote">"Me propongo cambiar, arranco bien los primeros días, pero a las semanas vuelvo a los mismos hábitos de siempre."</h2>
         <div class="ident-scale" id="optsIdent2">
           <div class="ident-opt" data-val="1" onclick="pickIdent(this,'ident2')">
             <span class="ident-emoji">😐</span><span class="ident-lbl">Nada</span>
@@ -438,6 +438,11 @@
           <div class="opt" data-val="sleep" onclick="pickOpt(this,13)"><span class="opt-icon">🌙</span><span class="opt-txt">Mejorar la calidad de mi sueño y descanso</span></div>
           <div class="opt" data-val="focus" onclick="pickOpt(this,13)"><span class="opt-icon">🎯</span><span class="opt-txt">Aumentar mi foco y productividad diaria</span></div>
           <div class="opt" data-val="all" onclick="pickOpt(this,13)"><span class="opt-icon">🌸</span><span class="opt-txt">Todo lo anterior, quiero una transformación completa</span></div>
+          <div class="opt opt-other" data-val="other" onclick="pickOptOther(this,13)"><span class="opt-icon">✏️</span><span class="opt-txt">Otro — quiero contarlo</span></div>
+        </div>
+        <div class="other-goal-wrap" id="otherGoalWrap">
+          <textarea id="otherGoalInput" class="other-goal-input" placeholder="Contanos brevemente qué te trajo hasta acá..." rows="3"></textarea>
+          <button class="btn-cont" id="otherGoalBtn" onclick="submitOtherGoal()">Continuar →</button>
         </div>
       </div>
     </section>

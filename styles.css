@@ -404,6 +404,31 @@ button { font-family: var(--font-body); cursor: pointer; border: none; backgroun
   box-shadow: 0 8px 28px rgba(45,134,83,.38);
 }
 .btn-cont.hidden { display: none; }
+
+/* Opción "Otro" con campo libre */
+.opt-other { border-style: dashed; }
+.other-goal-wrap {
+  display: none;
+  margin-top: 12px;
+  animation: fadeIn .25s ease;
+}
+.other-goal-input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1.5px solid var(--green-light);
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-size: .95rem;
+  color: var(--dark);
+  background: var(--white);
+  resize: none;
+  outline: none;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  transition: border-color .2s;
+}
+.other-goal-input:focus { border-color: var(--green); }
+.other-goal-input.input-error { border-color: #e74c3c; }
 .anx-btn-wrap {
   position: fixed;
   bottom: 0;

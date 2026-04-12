@@ -168,9 +168,45 @@ function pickOpt(el, qId) {
   el.classList.add('selected');
   answers[qId] = el.dataset.val;
 
+  // Si había campo "Otro" abierto, ocultarlo al elegir otra opción
+  const otherWrap = document.getElementById('otherGoalWrap');
+  if (otherWrap) otherWrap.style.display = 'none';
+
   // Single-select: auto-advance, no button needed
   clearTimeout(_autoAdvTimer);
   _autoAdvTimer = setTimeout(() => nextScreen(), 700);
+}
+
+// Opción "Otro" — muestra campo de texto libre
+function pickOptOther(el, qId) {
+  clearTimeout(_autoAdvTimer);
+  const parent = el.closest('.options-grid');
+  parent.querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  answers[qId] = 'other';
+
+  const wrap = document.getElementById('otherGoalWrap');
+  if (wrap) {
+    wrap.style.display = 'block';
+    const inp = document.getElementById('otherGoalInput');
+    if (inp) setTimeout(() => inp.focus(), 100);
+  }
+}
+
+function submitOtherGoal() {
+  const input = document.getElementById('otherGoalInput');
+  const val = input ? input.value.trim() : '';
+  if (!val) {
+    if (input) {
+      input.classList.add('input-error');
+      input.placeholder = 'Contanos algo para continuar';
+      setTimeout(() => input.classList.remove('input-error'), 1500);
+    }
+    return;
+  }
+  answers[13] = 'other';
+  sessionStorage.setItem('flOtherGoal', val);
+  nextScreen();
 }
 
 // =========================================================
