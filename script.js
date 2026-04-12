@@ -22,7 +22,7 @@ const SCREENS = [
   's11',       // q10: symptoms (multi)
   'sAnxSymptoms', // NEW: síntomas físicos de ansiedad
   'sIdent3b',  // NEW: identificación emocional
-  's12',       // q11: mindfulness
+  's12',       // q11: origen del estrés
   's13',       // q12: main goal
   'sPrevAttempt', // NEW: intentos previos fallidos
   'sInt3',     // intermediate: results preview
