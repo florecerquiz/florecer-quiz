@@ -1747,7 +1747,34 @@ button { font-family: var(--font-body); cursor: pointer; border: none; backgroun
 
   .stats-grid { grid-template-columns: 1fr; max-width: 400px; }
   .problems-grid { grid-template-columns: 1fr; }
-  .testi-grid { grid-template-columns: 1fr; }
+
+  /* Carousel horizontal de testimonios */
+  .testi-grid {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 14px;
+    margin: 0 -20px;
+    padding: 4px 20px 20px;
+  }
+  .testi-grid::-webkit-scrollbar { display: none; }
+  .testi-card {
+    min-width: 82vw;
+    max-width: 82vw;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+
+  /* Espaciado vertical más compacto en mobile */
+  .goals-section,
+  .stats-section,
+  .problems-section,
+  .chart-section,
+  .testimonials-section,
+  .faq-section { padding: 48px 0; }
 
   .chart-bars { gap: 5px; height: 180px; }
   .bar-val { font-size: .6rem; top: -18px; }
