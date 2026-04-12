@@ -858,8 +858,8 @@ function _populateUpsell(plan) {
 }
 
 function acceptUpsell() {
-  // Meta Pixel — AddToCart (acepta el upsell)
-  if (typeof fbq !== 'undefined') fbq('track', 'AddToCart', { content_name: 'Upsell Aceptado', currency: 'ARS' });
+  // Meta Pixel — InitiateCheckout (acepta el upsell)
+  if (typeof fbq !== 'undefined') fbq('track', 'InitiateCheckout', { content_name: 'Upsell Aceptado', currency: 'ARS' });
   const cfg = UPSELL_CONFIG[_selectedPlan];
   _goToTN(cfg ? cfg.upsellPlan : '12weeks-upsell');
 }
