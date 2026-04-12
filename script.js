@@ -692,6 +692,7 @@ function showSales() {
     energy:  'recuperar energía y vitalidad',
     calm:    'encontrar calma y reducir el estrés',
     emotion: 'mejorar tu estado emocional',
+    relations: 'mejorar tus vínculos y relaciones personales',
     sleep:   'mejorar la calidad de tu sueño',
     focus:   'aumentar tu foco y productividad',
     all:     'lograr una transformación completa'
