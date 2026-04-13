@@ -1009,22 +1009,18 @@ function _goToTN(plan) {
   const id = productIds[plan];
   if (!id) return;
 
+  // POST con buy_now en el body — Tienda Nube requiere POST para checkout directo
   const form = document.createElement('form');
   form.method = 'POST';
-  form.action = 'https://florecer60.mitiendanube.com/comprar/?buy_now=1';
+  form.action = 'https://florecer60.mitiendanube.com/comprar/';
+  form.style.display = 'none';
 
-  const addField = document.createElement('input');
-  addField.type = 'hidden';
-  addField.name = 'add_to_cart';
-  addField.value = id;
-  form.appendChild(addField);
-
-  const qtyField = document.createElement('input');
-  qtyField.type = 'hidden';
-  qtyField.name = 'quantity';
-  qtyField.value = '1';
-  form.appendChild(qtyField);
-
+  const fields = { add_to_cart: id, quantity: '1', buy_now: '1' };
+  for (const [k, v] of Object.entries(fields)) {
+    const inp = document.createElement('input');
+    inp.type = 'hidden'; inp.name = k; inp.value = v;
+    form.appendChild(inp);
+  }
   document.body.appendChild(form);
   form.submit();
   document.body.removeChild(form);
