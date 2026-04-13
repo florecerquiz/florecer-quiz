@@ -1011,7 +1011,7 @@ function _goToTN(plan) {
 
   const form = document.createElement('form');
   form.method = 'POST';
-  form.action = 'https://florecer60.mitiendanube.com/comprar/';
+  form.action = 'https://florecer60.mitiendanube.com/comprar/?buy_now=1';
 
   const addField = document.createElement('input');
   addField.type = 'hidden';
@@ -1024,12 +1024,6 @@ function _goToTN(plan) {
   qtyField.name = 'quantity';
   qtyField.value = '1';
   form.appendChild(qtyField);
-
-  const buyField = document.createElement('input');
-  buyField.type = 'hidden';
-  buyField.name = 'buy_now';
-  buyField.value = '1';
-  form.appendChild(buyField);
 
   document.body.appendChild(form);
   form.submit();
