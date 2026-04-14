@@ -805,7 +805,7 @@ function submitEmail() {
   if (typeof fbq !== 'undefined') fbq('track', 'Lead', { content_name: 'Florecer Quiz' });
 
   // Enviar a Formspree (silencioso, no bloquea el flujo)
-  fetch('https://formspree.io/f/xgopbenn', {
+  fetch('https://formspree.io/f/mreonoqk', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
     body: JSON.stringify({
