@@ -988,7 +988,8 @@ function _populateUpsell(plan) {
 
 function acceptUpsell() {
   // Meta Pixel — InitiateCheckout (acepta el upsell)
-  if (typeof fbq !== 'undefined') fbq('track', 'InitiateCheckout', { content_name: 'Upsell Aceptado', currency: 'ARS' });
+  const upsellPrices = { trial: 14990, '4weeks': 29990 };
+  if (typeof fbq !== 'undefined') fbq('track', 'InitiateCheckout', { content_name: 'Upsell Aceptado', value: upsellPrices[_selectedPlan] || 0, currency: 'ARS' });
   const cfg = UPSELL_CONFIG[_selectedPlan];
   _goToTN(cfg ? cfg.upsellPlan : '12weeks-upsell');
 }
