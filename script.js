@@ -815,6 +815,13 @@ function submitEmail() {
     })
   }).catch(() => {});
 
+  // Enviar a Brevo para email marketing
+  fetch('/api/lead', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: val, nombre: sessionStorage.getItem('flName') || '' })
+  }).catch(() => {});
+
   // Si ya capturamos el nombre en sCommit, saltear sName
   const savedName = sessionStorage.getItem('flName');
   if (savedName) {
