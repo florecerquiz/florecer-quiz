@@ -940,30 +940,30 @@ let _selectedPlan = null;
 // Config dinámica de upsell según el plan elegido
 const UPSELL_CONFIG = {
   trial: {
-    planName:   'Plan de 4 Semanas',
-    sub:        'Como acabás de unirte, podés pasar al <strong>Plan de 4 Semanas</strong> pagando solo la diferencia — una sola vez.',
+    planName:   'Plan de 3 Meses',
+    sub:        'Como acabás de unirte, podés pasar al <strong>Plan de 3 Meses</strong> pagando solo la diferencia — una sola vez.',
     original:   '$59.990',
     price:      '$14.990',
     saving:     'Ahorrás $45.000 — solo disponible ahora',
-    btnText:    'SÍ, QUIERO EL PLAN DE 4 SEMANAS →',
-    bullets:    ['✓ 4 semanas de guía completa', '✓ Técnicas de manejo del estrés', '✓ Rutinas de sueño y energía', '✓ Acceso inmediato'],
+    btnText:    'SÍ, QUIERO EL PLAN DE 3 MESES →',
+    bullets:    ['✓ 3 meses de guía completa', '✓ Técnicas de manejo del estrés', '✓ Rutinas de sueño y energía', '✓ Acceso inmediato'],
     upsellPlan: '4weeks-upsell'
   },
   '4weeks': {
-    planName:   'Plan de 12 Semanas',
-    sub:        'Como acabás de unirte, podés acceder al <strong>Plan de 12 Semanas</strong> por solo la diferencia — una sola vez.',
+    planName:   'Plan de 6 Meses',
+    sub:        'Como acabás de unirte, podés acceder al <strong>Plan de 6 Meses</strong> por solo la diferencia — una sola vez.',
     original:   '$99.990',
     price:      '$29.990',
     saving:     'Ahorrás $70.000 — solo disponible ahora',
-    btnText:    'SÍ, QUIERO EL PLAN COMPLETO →',
-    bullets:    ['✓ Transformación completa de 12 semanas', '✓ Sistema de hábitos avanzados', '✓ Técnicas de neuroplasticidad', '✓ Acceso inmediato'],
+    btnText:    'SÍ, QUIERO EL PLAN DE 6 MESES →',
+    bullets:    ['✓ Transformación completa de 6 meses', '✓ Sistema de hábitos avanzados', '✓ Técnicas de neuroplasticidad', '✓ Acceso inmediato'],
     upsellPlan: '12weeks-upsell'
   }
 };
 
 function selectPlan(plan) {
   // Meta Pixel — AddToCart + InitiateCheckout
-  const planNames = { trial: 'Prueba 7 Días', '4weeks': 'Plan 4 Semanas', '12weeks': 'Plan 12 Semanas' };
+  const planNames = { trial: 'Plan 1 Mes', '4weeks': 'Plan 3 Meses', '12weeks': 'Plan 6 Meses' };
   const planPrices = { trial: 9990, '4weeks': 24990, '12weeks': 54990 };
   if (typeof fbq !== 'undefined') fbq('track', 'AddToCart', {
     content_name: planNames[plan] || plan,
