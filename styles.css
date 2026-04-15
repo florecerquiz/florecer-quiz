@@ -1188,11 +1188,11 @@ button { font-family: var(--font-body); cursor: pointer; border: none; backgroun
 .best-value-badge { background: var(--yellow); color: var(--white); }
 
 .plan-name {
-  font-size: .72rem;
-  font-weight: 700;
+  font-size: .95rem;
+  font-weight: 800;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--green);
   margin-bottom: 14px;
   margin-top: 4px;
 }
