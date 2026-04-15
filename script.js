@@ -962,9 +962,14 @@ const UPSELL_CONFIG = {
 };
 
 function selectPlan(plan) {
-  // Meta Pixel — InitiateCheckout
+  // Meta Pixel — AddToCart + InitiateCheckout
   const planNames = { trial: 'Prueba 7 Días', '4weeks': 'Plan 4 Semanas', '12weeks': 'Plan 12 Semanas' };
   const planPrices = { trial: 9990, '4weeks': 24990, '12weeks': 54990 };
+  if (typeof fbq !== 'undefined') fbq('track', 'AddToCart', {
+    content_name: planNames[plan] || plan,
+    value: planPrices[plan] || 0,
+    currency: 'ARS'
+  });
   if (typeof fbq !== 'undefined') fbq('track', 'InitiateCheckout', {
     content_name: planNames[plan] || plan,
     value: planPrices[plan] || 0,
@@ -994,8 +999,9 @@ function _populateUpsell(plan) {
 }
 
 function acceptUpsell() {
-  // Meta Pixel — InitiateCheckout (acepta el upsell)
+  // Meta Pixel — AddToCart + InitiateCheckout (acepta el upsell)
   const upsellPrices = { trial: 14990, '4weeks': 29990 };
+  if (typeof fbq !== 'undefined') fbq('track', 'AddToCart', { content_name: 'Upsell Aceptado', value: upsellPrices[_selectedPlan] || 0, currency: 'ARS' });
   if (typeof fbq !== 'undefined') fbq('track', 'InitiateCheckout', { content_name: 'Upsell Aceptado', value: upsellPrices[_selectedPlan] || 0, currency: 'ARS' });
   const cfg = UPSELL_CONFIG[_selectedPlan];
   _goToTN(cfg ? cfg.upsellPlan : '12weeks-upsell');
